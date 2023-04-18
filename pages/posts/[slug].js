@@ -13,13 +13,17 @@ import { metaTagsFragment, responsiveImageFragment } from "../../lib/fragments";
 import LanguageBar from "../../components/language-bar";
 
 export async function getStaticPaths({ locales }) {
-  const data = await request({ query: `{ allPosts { slug } }` });
   const pathsArray = [];
-  data.allPosts.map((post) => {
-    locales.map((language) => {
-      pathsArray.push({ params: { slug: post.slug }, locale: language });
+
+  for (const locale of locales) {
+    const data = await request({
+      query: `{ allPosts { slug(locale: ${locale}, fallbackLocales: en) } }`,
     });
-  });
+
+    data.allPosts.map((post) => {
+      pathsArray.push({ params: { slug: post.slug }, locale });
+    });
+  }
 
   return {
     paths: pathsArray,
@@ -27,8 +31,14 @@ export async function getStaticPaths({ locales }) {
   };
 }
 
-export async function getStaticProps({ params, preview = false, locale }) {
+export async function getStaticProps({
+  params,
+  preview = false,
+  locale,
+  locales,
+}) {
   const formattedLocale = locale.split("-")[0];
+  const alternativeLocale = locales.filter((item) => item !== locale);
   const graphqlRequest = {
     query: `
       query PostBySlug($slug: String) {
@@ -42,7 +52,7 @@ export async function getStaticProps({ params, preview = false, locale }) {
             ...metaTagsFragment
           }
           title
-          slug
+          slug(locale: ${alternativeLocale[0]})
           content {
             value
             blocks {
@@ -130,7 +140,7 @@ export default function Post({ subscription, preview }) {
     <Layout preview={preview}>
       <Head>{renderMetaTags(metaTags)}</Head>
       <Container>
-        <LanguageBar />
+        <LanguageBar localizedSlug={post.slug} />
         <Header />
         <article>
           <PostHeader
