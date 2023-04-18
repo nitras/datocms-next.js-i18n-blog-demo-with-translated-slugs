@@ -15,7 +15,7 @@ export default function LanguageBar({ localizedSlug }) {
         </a>
       </Link>
       <Link
-        href={router.locale == "en" ? currentPath : localizedSlug}
+        href={router.locale == "en" ? currentPath : localizedSlug || "/"}
         locale="en"
       >
         <a className="underline hover:text-success duration-200 transition-colors p-1">

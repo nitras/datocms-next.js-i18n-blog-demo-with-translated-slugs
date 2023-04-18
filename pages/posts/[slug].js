@@ -52,7 +52,7 @@ export async function getStaticProps({
             ...metaTagsFragment
           }
           title
-          slug(locale: ${alternativeLocale[0]})
+          slug(locale: ${alternativeLocale[0]}, fallbackLocales: en)
           content {
             value
             blocks {
