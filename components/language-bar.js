@@ -22,6 +22,16 @@ export default function LanguageBar({ localizedSlug }) {
 					Dutch NL-BE
 				</a>
 			</Link>
+
+			<Link
+				href={router.locale == 'ru' ? currentPath : localizedSlug || '/'}
+				locale="ru"
+			>
+				<a className="underline hover:text-success duration-200 transition-colors p-1">
+					Russian
+				</a>
+			</Link>
+
 			<Link
 				href={router.locale == 'en' ? currentPath : localizedSlug || '/'}
 				locale="en"
