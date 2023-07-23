@@ -85,6 +85,7 @@ export default function Index({ subscription }) {
 				<Container>
 					<LanguageBar />
 					<Intro />
+					<h1>This is my test</h1>
 					{heroPost && (
 						<HeroPost
 							title={heroPost.title}
