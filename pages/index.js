@@ -26,7 +26,7 @@ export async function getStaticProps({ preview, locale }) {
             ...metaTagsFragment
           }
         }
-        allPosts(locale: ${formattedLocale}, orderBy: date_DESC, first: 20) {
+        allPosts(locale: ${formattedLocale}, orderBy: date_DESC, first: 50) {
           title
           slug
           excerpt
@@ -57,7 +57,7 @@ export async function getStaticProps({ preview, locale }) {
 				? {
 						...graphqlRequest,
 						initialData: await request(graphqlRequest),
-						token: process.env.NEXT_EXAMPLE_CMS_DATOCMS_API_TOKEN,
+						token: process.env.NEXT_DATOCMS_API_TOKEN,
 						environment: process.env.NEXT_DATOCMS_ENVIRONMENT || null,
 				  }
 				: {
