@@ -9,6 +9,7 @@ import { request } from '../lib/datocms';
 import { metaTagsFragment, responsiveImageFragment } from '../lib/fragments';
 import { useRouter } from 'next/router';
 import LanguageBar from '../components/language-bar';
+import i18n from '../lib/i18n';
 
 export async function getStaticProps({ preview, locale }) {
 	const formattedLocale = locale.split('-')[0];
@@ -85,7 +86,7 @@ export default function Index({ subscription }) {
 				<Container>
 					<LanguageBar />
 					<Intro />
-					<h1>This is my test</h1>
+					{/* <h1>{i18n.alert.clickCta[locale]}</h1> */}
 					{heroPost && (
 						<HeroPost
 							title={heroPost.title}
