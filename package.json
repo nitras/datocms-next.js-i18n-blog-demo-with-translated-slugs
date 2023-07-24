@@ -9,7 +9,6 @@
 	"dependencies": {
 		"@datocms/cma-client": "^1.1.10",
 		"@datocms/cma-client-node": "^1.1.10",
-		"@studio-freight/react-lenis": "^0.0.23",
 		"classnames": "2.3.1",
 		"date-fns": "2.21.1",
 		"next": "^12.3.1",
