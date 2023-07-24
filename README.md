@@ -1,8 +1,9 @@
 # A multi-language blog example using Next.js and DatoCMS
 
-This example showcases a Next.js multi-language blog using [DatoCMS](https://www.datocms.com/) as the data source. It fully supports [Preview Mode](https://www.datocms.com/docs/next-js/setting-up-next-js-preview-mode) with [DatoCMS real-time updates](https://www.datocms.com/docs/next-js/real-time-updates) as well as [DatoCMS SiteSearch](https://www.datocms.com/docs/site-search)  used to index and display the posts searched by the user.
+This example showcases a Next.js multi-language blog using [DatoCMS](https://www.datocms.com/) as the data source. It fully supports [Preview Mode](https://www.datocms.com/docs/next-js/setting-up-next-js-preview-mode) with [DatoCMS real-time updates](https://www.datocms.com/docs/next-js/real-time-updates) as well as [DatoCMS SiteSearch](https://www.datocms.com/docs/site-search) used to index and display the posts searched by the user.
 
 The purpose of this repo is to have a quick start reference that can be set up with the "one-click" button below. This is what the end result looks like:
+
 #### [https://next-js-i18n-blog-demo-with-sitesearch.vercel.app/](https://next-js-i18n-blog-demo-with-sitesearch.vercel.app/)
 
 ## How to use
@@ -15,7 +16,7 @@ The purpose of this repo is to have a quick start reference that can be set up w
 
 3. Let DatoCMS set everything up for you clicking this button:
 
-  [![Deploy with DatoCMS](https://dashboard.datocms.com/deploy/button.svg)](https://dashboard.datocms.com/deploy?repo=datocms/next.js-i18n-blog-demo-site-search)
+[![Deploy with DatoCMS](https://dashboard.datocms.com/deploy/button.svg)](https://dashboard.datocms.com/deploy?repo=datocms/next.js-i18n-blog-demo-site-search)
 
 ### Local setup
 

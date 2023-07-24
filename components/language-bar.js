@@ -7,11 +7,11 @@ export default function LanguageBar({ localizedSlug }) {
 	return (
 		<section className="flex-col md:flex-row flex items-center md:justify-end mr-0 mt-0 mb-0 md:mb-0">
 			<Link
-				href={router.locale == 'nl-BE' ? currentPath : localizedSlug || '/'}
-				locale="nl-BE"
+				href={router.locale == 'nl' ? currentPath : localizedSlug || '/'}
+				locale="nl"
 			>
 				<a className="underline hover:text-success duration-200 transition-colors p-1">
-					Dutch NL-BE
+					Nederlands
 				</a>
 			</Link>
 
