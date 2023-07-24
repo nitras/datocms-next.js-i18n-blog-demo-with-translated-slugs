@@ -12,7 +12,9 @@ import LanguageBar from '../components/language-bar';
 import i18n from '../lib/i18n';
 
 export async function getStaticProps({ preview, locale }) {
-	const formattedLocale = locale.split('-')[0];
+	// const formattedLocale =  locale.split('-')[0];
+	console.log(locale);
+	const formattedLocale = locale;
 	const graphqlRequest = {
 		query: `
       {
