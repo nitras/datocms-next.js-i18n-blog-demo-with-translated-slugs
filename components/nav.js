@@ -1,0 +1,115 @@
+import { useRef, useState, useEffect } from 'react';
+import MousePosition from '../helpers/mousePosition';
+
+export default function Nav() {
+	const containerRef = useRef(null);
+	const mousePosition = MousePosition();
+	const mouse = useRef({ x: 0, y: 0 });
+	const containerSize = useRef({ w: 0, h: 0 });
+	const [scrollDir, setScrollDir] = useState(null);
+	const threshold = 100;
+
+	useEffect(() => {
+		let previousScrollYPosition = window.scrollY;
+
+		const scrolledMoreThanThreshold = (currentScrollYPosition) =>
+			Math.abs(currentScrollYPosition - previousScrollYPosition) > threshold;
+
+		const isScrollingUp = (currentScrollYPosition) =>
+			currentScrollYPosition > previousScrollYPosition &&
+			!(previousScrollYPosition > 0 && currentScrollYPosition === 0) &&
+			!(currentScrollYPosition > 0 && previousScrollYPosition === 0);
+
+		const updateScrollDirection = () => {
+			const currentScrollYPosition = window.scrollY;
+
+			if (scrolledMoreThanThreshold(currentScrollYPosition)) {
+				const newScrollDirection = isScrollingUp(currentScrollYPosition)
+					? 'down'
+					: 'up';
+				setScrollDir(newScrollDirection);
+				previousScrollYPosition =
+					currentScrollYPosition > 0 ? currentScrollYPosition : 0;
+			}
+		};
+
+		const onScroll = () => window.requestAnimationFrame(updateScrollDirection);
+
+		window.addEventListener('scroll', onScroll);
+
+		return () => window.removeEventListener('scroll', onScroll);
+	}, []);
+
+	useEffect(() => {
+		initContainer();
+		window.addEventListener('resize', initContainer);
+
+		return () => {
+			window.removeEventListener('resize', initContainer);
+		};
+	}, []);
+
+	useEffect(() => {
+		onMouseMove();
+	}, [mousePosition]);
+
+	const initContainer = () => {
+		if (containerRef.current) {
+			containerSize.current.w = containerRef.current.offsetWidth;
+			containerSize.current.h = containerRef.current.offsetHeight;
+		}
+	};
+
+	const onMouseMove = () => {
+		if (containerRef.current) {
+			const rect = containerRef.current.getBoundingClientRect();
+			const { w, h } = containerSize.current;
+			const x = mousePosition.x - rect.left;
+			const y = mousePosition.y - rect.top;
+			const inside = x < w && x > 0 && y < h && y > 0;
+			if (inside) {
+				mouse.current.x = x;
+				mouse.current.y = y;
+
+				const navX =
+					-(containerRef.current.getBoundingClientRect().left - rect.left) +
+					mouse.current.x;
+				const navY =
+					-(containerRef.current.getBoundingClientRect().top - rect.top) +
+					mouse.current.y;
+				containerRef.current.style.setProperty('--mouse-x', `${navX}px`);
+				containerRef.current.style.setProperty('--mouse-y', `${navY}px`);
+			}
+		}
+	};
+
+	return (
+		<nav
+			ref={containerRef}
+			className={`w-screen fixed top-0 left-0 flex backdrop-blur-[1.2rem] z-[1000] overflow-hidden group transition-all ${
+				scrollDir === 'down' ? '-translate-y-full' : '-translate-y-0'
+			}`}
+		>
+			<div className="w-full pt-[2vw] pb-[1vw] relative h-full rounded-3xl p-px before:absolute before:w-80 before:bg-[#AFA7FF99] before:h-80 before:-left-40 before:-top-40 before:rounded-full before:opacity-0 before:pointer-events-none before:transition-opacity before:duration-500 before:translate-x-[var(--mouse-x)] before:translate-y-[var(--mouse-y)] before:group-hover:opacity-100 before:z-20 before:blur-[100px]">
+				<div className="row grid grid-cols-3 items-end relative z-30">
+					<ul className="flex items-center">
+						<li className="mr-[1.67vw]">
+							<a href="/about">About</a>
+						</li>
+						<li>
+							<a href="/gallery" className="flex items-center">
+								<span>Gallery</span>
+							</a>
+						</li>
+					</ul>
+					<ul className="flex justify-center">
+						<li>
+							<a href="/">LOGO</a>
+						</li>
+					</ul>
+				</div>
+				<div className="absolute z-10 w-full h-[0.1rem] left-0 bottom-0 bg-gray-400 opacity-20"></div>
+			</div>
+		</nav>
+	);
+}

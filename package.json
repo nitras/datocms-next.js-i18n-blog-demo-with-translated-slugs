@@ -2,7 +2,7 @@
 	"name": "datocms-demo-nextjs-i18n",
 	"version": "1.0.0",
 	"scripts": {
-		"dev": "next",
+		"dev": "concurrently \"next dev\" \"nodemon --watch incrementVersion.js --exec 'node incrementVersion.js' --watch pages --watch components --ext js,jsx,json --watch public\"",
 		"build": "next build",
 		"start": "next start"
 	},
@@ -11,6 +11,8 @@
 		"@datocms/cma-client-node": "^1.1.10",
 		"classnames": "2.3.1",
 		"date-fns": "2.21.1",
+		"gsap": "^3.12.1",
+		"locomotive-scroll": "^4.1.4",
 		"next": "^12.3.1",
 		"react": "^17.0.2",
 		"react-datocms": "^3.1.1",
@@ -20,8 +22,12 @@
 	"devDependencies": {
 		"@fullhuman/postcss-purgecss": "^4.0.0",
 		"@tailwindcss/typography": "^0.4.0",
+		"concurrently": "^8.2.0",
 		"dotenv": "8.2.0",
+		"git-revision-webpack-plugin": "^5.0.0",
+		"nodemon": "^3.0.1",
 		"postcss-preset-env": "^7.8.2",
-		"tailwindcss": "^2.0.3"
+		"tailwindcss": "^2.0.3",
+		"watch": "^1.0.2"
 	}
 }
