@@ -11,13 +11,12 @@ import { useRouter } from 'next/router';
 import LanguageBar from '../components/language-bar';
 import ScrollText from '../components/ScrollText';
 import Nav from '../components/nav';
-// import VersionDisplay from '../components/VersionDisplay';
 
 import i18n from '../lib/i18n';
 
 import { useIsomorphicLayoutEffect } from '../helpers/isomorphicEffect';
-import VersionDisplay from '../components/versionDisplay';
-import BuildId from '../components/buildid';
+// import VersionDisplay from '../components/versionDisplay';
+// import BuildId from '../components/buildid';
 
 export async function getStaticProps({ preview, locale }) {
 	const formattedLocale = locale.split('-')[0];
@@ -97,8 +96,6 @@ export default function Index({ subscription }) {
 			<Layout>
 				<Head>{renderMetaTags(metaTags)}</Head>
 				<Container>
-					<BuildId />
-					<VersionDisplay />
 					{/* <Nav /> */}
 					<LanguageBar />
 					<Intro />
