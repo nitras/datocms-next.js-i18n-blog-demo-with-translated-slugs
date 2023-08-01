@@ -1,15 +1,6 @@
 require('dotenv').config();
 
-const GitRevisionPlugin = require('git-revision-webpack-plugin');
-
 module.exports = {
-	webpack: (config, { dev }) => {
-		if (!dev) {
-			config.plugins.push(new GitRevisionPlugin());
-		}
-
-		return config;
-	},
 	generateBuildId: async () => {
 		// You can, for example, get the latest git commit hash here
 		return '1.00';

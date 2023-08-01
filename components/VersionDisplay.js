@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import { version } from '../package.json';
+import getGitCommitHash from '../helpers/getGitCommitHash';
 
 const VersionDisplay = () => {
 	// const [appVersion, setAppVersion] = useState(1);
-
+	const version = getGitCommitHash();
 	// useEffect(() => {
 	// 	fetch('/api/version') // Fetch the version file from the public folder
 	// 		.then((response) => response.json())
