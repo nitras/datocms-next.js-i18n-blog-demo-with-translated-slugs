@@ -13,8 +13,6 @@ import LanguageBar from '../components/language-bar';
 
 import i18n from '../lib/i18n';
 import TextRevealLR from '../components/TextRevealLR';
-import ImageOnHover from '../components/imageonhover';
-import ImageClipSection from '../components/ImageClipSection';
 
 // import Image from 'next/image';
 // import VersionDisplay from '../components/versionDisplay';
@@ -100,7 +98,6 @@ export default function Index({ subscription }) {
 				<Container>
 					{/* <LanguageBar /> */}
 
-					<ImageClipSection />
 					{/* <ImageOnHover /> */}
 					{/* <Intro /> */}
 

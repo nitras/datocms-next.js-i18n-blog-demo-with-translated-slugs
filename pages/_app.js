@@ -12,7 +12,6 @@ function MyApp({ Component, pageProps }) {
 			<motion.div key={router.pathname}>
 				<PageProvider>
 					<Component {...pageProps} />
-
 					<motion.div
 						className="slide-in"
 						initial={{ scaleY: 0 }}
@@ -25,7 +24,7 @@ function MyApp({ Component, pageProps }) {
 						initial={{ scaleY: 1 }}
 						animate={{ scaleY: 0 }}
 						exit={{ scaleY: 0 }}
-						transition={{ duraction: 1, ease: [0.22, 1, 0.36, 1] }}
+						transition={{ duraction: 2, ease: [0.61, 1, 0.88, 1] }}
 					></motion.div>
 				</PageProvider>
 			</motion.div>
