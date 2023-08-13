@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-// import Image from 'next/image';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
@@ -47,7 +46,10 @@ export default function ScrollText() {
 	}, []);
 
 	return (
-		<section ref={containerRef} className="relative h-screen">
+		<section
+			ref={containerRef}
+			className="relative h-screen"
+		>
 			<div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[170vw] font-bit text-[16vw] leading-[0.8] uppercase z-40">
 				<div
 					ref={firstLineRef}

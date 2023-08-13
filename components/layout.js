@@ -1,11 +1,11 @@
-import Alert from '../components/alert';
+import Navigation from '../components/nav';
 import Footer from '../components/footer';
 
-export default function Layout({ preview, children }) {
+export default function Layout({ children }) {
 	return (
 		<>
+			<Navigation />
 			<div className="min-h-screen">
-				{/* <Alert preview={preview} /> */}
 				<main>{children}</main>
 			</div>
 			<Footer />

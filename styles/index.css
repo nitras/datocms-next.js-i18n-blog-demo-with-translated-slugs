@@ -47,3 +47,46 @@
 	display: flex;
 	justify-content: center;
 }
+body.header {
+	margin-bottom: 200px;
+}
+
+body.hide_header .header {
+	transform: translateY(-100%);
+}
+
+body.scrolled .header {
+	/* background: #f5f4f5; */
+}
+
+@media (min-width: 1024px) {
+	body.scrolled .header_container {
+		padding: 40px 0;
+	}
+
+	body.scrolled .header_logo svg {
+		height: 38px;
+	}
+}
+
+/* transition: al */
+
+.slide-in {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	background: black;
+	transform-origin: bottom;
+}
+
+.slide-out {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	background: black;
+	transform-origin: top;
+}
